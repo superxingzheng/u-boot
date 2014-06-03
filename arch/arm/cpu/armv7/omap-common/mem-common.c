@@ -132,6 +132,4 @@ void gpmc_init(void)
 	 */
 	writel(0, &gpmc_cfg->cs[0].config7);
 	sdelay(1000);
-	/* enable chip-select specific configurations */
-	enable_gpmc_cs_config(gpmc_regs, &gpmc_cfg->cs[0], base, size);
 }
