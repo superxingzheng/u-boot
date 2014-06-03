@@ -87,6 +87,14 @@ int misc_init_r(void)
 	return 0;
 }
 
+#ifdef CONFIG_SPL_OS_BOOT
+int spl_start_uboot(void)
+{
+        /* break into full u-boot on 'c' */
+        return serial_tstc() && serial_getc() == 'c';
+}
+#endif
+
 void set_muxconf_regs_essential(void)
 {
 	do_set_mux((*ctrl)->control_padconf_core_base,
